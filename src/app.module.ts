@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { EnvironmentConfigModule } from './config/config';
+import { AxiosService } from './adapters/axios/axios.service';
+import { AxiosService } from './config/adapters/axios/axios.service';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [EnvironmentConfigModule],
+  providers: [AxiosService],
 })
 export class AppModule {}
