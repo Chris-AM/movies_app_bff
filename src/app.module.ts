@@ -1,7 +1,5 @@
 import { Module } from '@nestjs/common';
-import { EnvironmentConfigModule } from './config/config';
-import { AxiosService } from './adapters/axios/axios.service';
-import { AxiosService } from './config/adapters/axios/axios.service';
+import { EnvironmentConfigModule, AxiosService } from './config/config';
 
 @Module({
   imports: [EnvironmentConfigModule],
