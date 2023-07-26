@@ -6,6 +6,7 @@ export { MoviesDatasource } from './datasources/movies.datasource';
 //* entities
 export { ActorEntity } from './entities/actor.entity';
 export { MovieEntity } from './entities/movie.entity';
+export { GenreEntity } from './entities/genres.entity';
 export { VideoEntity } from './entities/video.entity';
 //* repositories
 export { ActorsRepository } from './repositories/actors.repository';
