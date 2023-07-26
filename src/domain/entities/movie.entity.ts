@@ -11,6 +11,6 @@ export class MovieEntity {
   releaseDate: Date;
   title: string;
   video: boolean;
-  voteAverage: boolean;
+  voteAverage: number;
   voteCount: number;
 }
