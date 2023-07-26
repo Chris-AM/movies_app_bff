@@ -6,9 +6,9 @@ import { HttpAdapter } from '../http-adapter/http-adapter.interface';
 export class AxiosService implements HttpAdapter {
   private axios: AxiosInstance = axios;
 
-  async get<T>(url: string): Promise<T> {
+  async get<T>(url: string, config?: any): Promise<T> {
     try {
-      const { data } = await this.axios.get(url);
+      const { data } = await this.axios.get(url, config);
       return data;
     } catch (error) {
       throw new Error('Error at logs');
