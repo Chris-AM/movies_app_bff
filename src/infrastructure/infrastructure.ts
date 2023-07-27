@@ -16,6 +16,3 @@ export { ActorsRepositoryImpl } from './repositories/actors.repository.impl';
 export { DiscoverRepositoryImpl } from './repositories/discover.repository.impl';
 export { GenresRepositoryImpl } from './repositories/genres.repository.impl';
 export { MovieRepositoryImpl } from './repositories/movies.repository.impl';
-
-//* Module
-export { InfrastructureModule as RepositoryModule } from './infrastructure.module';

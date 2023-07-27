@@ -5,7 +5,9 @@ import {
   ActorsRepository,
 } from 'src/domain/domain';
 
-@Injectable()
+@Injectable(
+  
+)
 export class ActorsRepositoryImpl implements ActorsRepository {
   constructor(private readonly datasource: ActorsDataSource) {}
 
