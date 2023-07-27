@@ -1,11 +1,9 @@
-import { Injectable } from '@nestjs/common';
 import {
   MovieEntity,
   MoviesDatasource,
   MoviesRepository,
 } from 'src/domain/domain';
 
-@Injectable()
 export class MovieRepositoryImpl implements MoviesRepository {
   constructor(private readonly datasource: MoviesDatasource) {}
 

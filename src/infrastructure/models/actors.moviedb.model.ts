@@ -1,12 +1,3 @@
-// To parse this data:
-//
-//   import { Convert, ActorsMovieDBModel } from "./file";
-//
-//   const actorsMovieDBModel = Convert.toActorsMovieDBModel(json);
-//
-// These functions will throw an error if the JSON doesn't
-// match the expected interface, even if the JSON is valid.
-
 export interface ActorsMovieDBModel {
   id: number;
   cast: Cast[];
@@ -32,7 +23,7 @@ export interface Cast {
 // and asserts the results of JSON.parse at runtime
 export class ActorsResponse {
   public static toActorsMovieDBModel(json: string): ActorsMovieDBModel {
-    return cast(JSON.parse(json), r('ActorsMovieDBModel'));
+    return cast(json, r('ActorsMovieDBModel'));
   }
 
   public static actorsMovieDBModelToJson(value: ActorsMovieDBModel): string {
