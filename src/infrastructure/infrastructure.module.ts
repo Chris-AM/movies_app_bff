@@ -1,13 +1,20 @@
 import { Module } from '@nestjs/common';
 import {
   ActorsMovieDBDatasource,
-  ActorsRepositoryImpl,
+  DiscoverMovieDBDatasource,
+  GenresMovieDBDatasource,
+  MovieDBDatasource,
 } from './infrastructure';
 import { ConfigModule, EnvironmentConfigModule } from 'src/config/config';
 
 @Module({
   imports: [ConfigModule, EnvironmentConfigModule],
-  providers: [ActorsMovieDBDatasource, ActorsRepositoryImpl],
-  exports: [ActorsRepositoryImpl, ActorsMovieDBDatasource],
+  providers: [
+    ActorsMovieDBDatasource,
+    DiscoverMovieDBDatasource,
+    GenresMovieDBDatasource,
+    MovieDBDatasource,
+  ],
+  exports: [ActorsMovieDBDatasource, MovieDBDatasource],
 })
 export class InfrastructureModule {}

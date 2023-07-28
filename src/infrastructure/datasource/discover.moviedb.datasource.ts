@@ -1,7 +1,9 @@
+import { Injectable } from '@nestjs/common';
 import { AxiosService, EnvironmentConfigService } from 'src/config/config';
 import { DiscoverDatasource, MovieEntity } from 'src/domain/domain';
 import { MovieDBResponse } from '../infrastructure';
 
+@Injectable()
 export class DiscoverMovieDBDatasource implements DiscoverDatasource {
   constructor(
     private readonly connection: AxiosService,

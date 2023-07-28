@@ -17,7 +17,7 @@ export interface Dates {
 
 export class MovieDBResponse {
     public static toMovieDBModel(json: string): MovieDBModel {
-        return cast(JSON.parse(json), r("MovieDBModel"));
+        return cast(json, r("MovieDBModel"));
     }
 
     public static movieDBModelToJson(value: MovieDBModel): string {

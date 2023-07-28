@@ -10,7 +10,7 @@ export interface Genre {
 
 export class GenreResponse {
     public static toGenreDBModel(json: string): GenreDBModel {
-        return cast(JSON.parse(json), r("GenreDBModel"));
+        return cast(json, r("GenreDBModel"));
     }
 
     public static genreDBModelToJson(value: GenreDBModel): string {

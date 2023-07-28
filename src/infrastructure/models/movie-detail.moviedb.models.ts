@@ -48,7 +48,7 @@ export interface SpokenLanguage {
 
 export class MovieDetailResponse {
     public static toMovieDetailDBModel(json: string): MovieDetailDBModel {
-        return cast(JSON.parse(json), r("MovieDetailDBModel"));
+        return cast(json, r("MovieDetailDBModel"));
     }
 
     public static movieDetailDBModelToJson(value: MovieDetailDBModel): string {

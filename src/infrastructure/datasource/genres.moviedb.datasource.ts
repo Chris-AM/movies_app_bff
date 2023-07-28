@@ -1,8 +1,10 @@
+import { Injectable } from '@nestjs/common';
 import { AxiosService, EnvironmentConfigService } from 'src/config/config';
 import { GenresDataSource } from 'src/domain/domain';
 import { GenreEntity } from 'src/domain/entities/genres.entity';
 import { GenreResponse } from '../infrastructure';
 
+@Injectable()
 export class GenresMovieDBDatasource implements GenresDataSource {
   constructor(
     private readonly connection: AxiosService,
