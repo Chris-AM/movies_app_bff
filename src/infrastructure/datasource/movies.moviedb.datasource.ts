@@ -7,8 +7,8 @@ export class MovieDBDatasource implements MoviesDatasource {
     private readonly connection: AxiosService,
     private readonly config: EnvironmentConfigService,
   ) {}
-  async getMovies(page: number): Promise<MovieEntity[]> {
-    const url = `${this.config.getMovieDBUrl()}/movie/now_playing`;
+  async getNowPlaying(page: number): Promise<MovieEntity[]> {
+    const url = `${this.config.getMovieDBUrl()}/movie/now_playing?api_key=${this.config.getMovieDBApiKey()}`;
     const params = {
       page: page,
     };

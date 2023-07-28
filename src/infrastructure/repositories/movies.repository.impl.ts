@@ -7,8 +7,8 @@ import {
 export class MovieRepositoryImpl implements MoviesRepository {
   constructor(private readonly datasource: MoviesDatasource) {}
 
-  async getMovies(page: number): Promise<MovieEntity[]> {
-    return await this.datasource.getMovies(page);
+  async getNowPlaying(page: number): Promise<MovieEntity[]> {
+    return await this.datasource.getNowPlaying(page);
   }
   async getPopular(page: number): Promise<MovieEntity[]> {
     return await this.datasource.getPopular(page);
