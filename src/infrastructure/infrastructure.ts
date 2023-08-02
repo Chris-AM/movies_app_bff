@@ -3,6 +3,8 @@ export { ActorsMovieDBDatasource } from './datasource/actors.moviedb.datasource'
 export { DiscoverMovieDBDatasource } from './datasource/discover.moviedb.datasource';
 export { GenresMovieDBDatasource } from './datasource/genres.moviedb.datasource';
 export { MovieDBDatasource } from './datasource/movies.moviedb.datasource';
+//* Mappers
+export { MovieMapper } from './mappers/movie.moviedb.mapper'
 //* Models
 export {
   ActorsMovieDBModel,

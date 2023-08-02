@@ -1,6 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { MovieEntity, MoviesDatasource } from 'src/domain/domain';
-import { MovieDBResponse, MovieDetailResponse } from '../infrastructure';
+import {
+  MovieDBResponse,
+  MovieDetailResponse,
+  MovieMapper,
+} from '../infrastructure';
 import { AxiosService, EnvironmentConfigService } from 'src/config/config';
 
 @Injectable()
@@ -89,14 +93,7 @@ export class MovieDBDatasource implements MoviesDatasource {
     const data = await this.connection.get<string>(url, params);
     const response = MovieDBResponse.toMovieDBModel(data);
     const movies: MovieEntity[] = response.results.map((resultData) => {
-      const movieEntity = new MovieEntity();
-      movieEntity.id = resultData.id;
-      movieEntity.title = resultData.title;
-      movieEntity.overview = resultData.overview;
-      movieEntity.posterPath = resultData.poster_path || '';
-      movieEntity.backdropPath = resultData.backdrop_path || '';
-      movieEntity.releaseDate = resultData.release_date;
-      movieEntity.voteAverage = resultData.vote_average;
+      const movieEntity = MovieMapper.movieDBToEntity(resultData);
       return movieEntity;
     });
     return movies;
