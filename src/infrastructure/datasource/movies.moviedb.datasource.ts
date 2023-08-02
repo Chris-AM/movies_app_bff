@@ -65,7 +65,7 @@ export class MovieDBDatasource implements MoviesDatasource {
   }
 
   async searchMovies(searchTerm: string): Promise<MovieEntity[]> {
-    const url = `${this.config.getMovieDBUrl()}/movie/top_rated?api_key=${this.config.getMovieDBApiKey()}`;
+    const url = `${this.config.getMovieDBUrl()}/search/movie?api_key=${this.config.getMovieDBApiKey()}&query=${searchTerm}`;
     const params = {
       query: searchTerm,
     };
