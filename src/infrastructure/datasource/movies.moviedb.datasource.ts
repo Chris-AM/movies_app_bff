@@ -23,7 +23,7 @@ export class MovieDBDatasource implements MoviesDatasource {
   }
 
   async getPopular(page: number): Promise<MovieEntity[]> {
-    const url = `${this.config.getMovieDBUrl()}/movie/popular`;
+    const url = `${this.config.getMovieDBUrl()}/movie/popular?api_key=${this.config.getMovieDBApiKey()}`;
     const params = {
       page: page,
     };
@@ -32,7 +32,7 @@ export class MovieDBDatasource implements MoviesDatasource {
   }
 
   async getUpcoming(page: number): Promise<MovieEntity[]> {
-    const url = `${this.config.getMovieDBUrl()}/movie/upcoming`;
+    const url = `${this.config.getMovieDBUrl()}/movie/upcoming?api_key=${this.config.getMovieDBApiKey()}`;
     const params = {
       page: page,
     };
@@ -41,7 +41,7 @@ export class MovieDBDatasource implements MoviesDatasource {
   }
 
   async topRated(page: number): Promise<MovieEntity[]> {
-    const url = `${this.config.getMovieDBUrl()}/movie/top_rated`;
+    const url = `${this.config.getMovieDBUrl()}/movie/top_rated?api_key=${this.config.getMovieDBApiKey()}`;
     const params = {
       page: page,
     };
@@ -50,7 +50,7 @@ export class MovieDBDatasource implements MoviesDatasource {
   }
 
   async getMovieById(id: number): Promise<MovieEntity> {
-    const url = `${this.config.getMovieDBUrl()}/movie/${id}`;
+    const url = `${this.config.getMovieDBUrl()}/movie/${id}?api_key=${this.config.getMovieDBApiKey()}`;
     const data = await this.connection.get<string>(url);
     const movieResponse = MovieDetailResponse.toMovieDetailDBModel(data);
     const movieEntity = new MovieEntity();
@@ -65,7 +65,7 @@ export class MovieDBDatasource implements MoviesDatasource {
   }
 
   async searchMovies(searchTerm: string): Promise<MovieEntity[]> {
-    const url = `${this.config.getMovieDBUrl()}/movie/top_rated`;
+    const url = `${this.config.getMovieDBUrl()}/movie/top_rated?api_key=${this.config.getMovieDBApiKey()}`;
     const params = {
       query: searchTerm,
     };
@@ -74,14 +74,14 @@ export class MovieDBDatasource implements MoviesDatasource {
   }
 
   async getVideosFromYouTube(movieId: number): Promise<MovieEntity[]> {
-    const url = `${this.config.getMovieDBUrl()}/movie/${movieId}/videos`;
+    const url = `${this.config.getMovieDBUrl()}/movie/${movieId}/videos?api_key=${this.config.getMovieDBApiKey()}`;
 
     const movies = await this.movieResponse(url);
     return movies;
   }
 
   async getSimilarMovies(movieId: number): Promise<MovieEntity[]> {
-    const url = `${this.config.getMovieDBUrl()}/movie/${movieId}/similar`;
+    const url = `${this.config.getMovieDBUrl()}/movie/${movieId}/similar?api_key=${this.config.getMovieDBApiKey()}`;
     const movies = await this.movieResponse(url);
     return movies;
   }
