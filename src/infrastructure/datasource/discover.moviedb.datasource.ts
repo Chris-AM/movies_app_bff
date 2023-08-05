@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { AxiosService, EnvironmentConfigService } from 'src/config/config';
 import { DiscoverDatasource, MovieEntity } from 'src/domain/domain';
-import { MovieDBResponse } from '../infrastructure';
+import { MovieDBResponse, MovieMapper } from '../infrastructure';
 
 @Injectable()
 export class DiscoverMovieDBDatasource implements DiscoverDatasource {
@@ -14,23 +14,11 @@ export class DiscoverMovieDBDatasource implements DiscoverDatasource {
     genreId: number,
     page: number,
   ): Promise<MovieEntity[]> {
-    const url = `${this.config.getMovieDBUrl()}/discover/movie`;
-    const params = {
-      with_genres: genreId,
-      page: page,
-    };
-    const data = await this.connection.get<string>(url, params);
+    const url = `${this.config.getMovieDBUrl()}/discover/movie?api_key=${this.config.getMovieDBApiKey()}&with_genres=${genreId}&page=${page}`;
+    const data = await this.connection.get<string>(url);
     const discoverResponse = MovieDBResponse.toMovieDBModel(data);
-
     const movies: MovieEntity[] = discoverResponse.results.map((resultData) => {
-      const movieEntity = new MovieEntity();
-      movieEntity.id = resultData.id;
-      movieEntity.title = resultData.title;
-      movieEntity.overview = resultData.overview;
-      movieEntity.posterPath = resultData.poster_path || '';
-      movieEntity.backdropPath = resultData.backdrop_path || '';
-      movieEntity.releaseDate = resultData.release_date;
-      movieEntity.voteAverage = resultData.vote_average;
+      const movieEntity = MovieMapper.movieDBToEntity(resultData);
       return movieEntity;
     });
 

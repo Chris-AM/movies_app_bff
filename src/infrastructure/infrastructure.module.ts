@@ -15,6 +15,11 @@ import { ConfigModule, EnvironmentConfigModule } from 'src/config/config';
     GenresMovieDBDatasource,
     MovieDBDatasource,
   ],
-  exports: [ActorsMovieDBDatasource, MovieDBDatasource],
+  exports: [
+    ActorsMovieDBDatasource,
+    MovieDBDatasource,
+    GenresMovieDBDatasource,
+    DiscoverMovieDBDatasource,
+  ],
 })
 export class InfrastructureModule {}

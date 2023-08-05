@@ -12,7 +12,7 @@ export class GenresMovieDBDatasource implements GenresDataSource {
   ) {}
 
   async getGenres(): Promise<GenreEntity[]> {
-    const url = `${this.config.getMovieDBUrl()}/genre/movie/list`;
+    const url = `${this.config.getMovieDBUrl()}/genre/movie/list?api_key=${this.config.getMovieDBApiKey()}`;
     const data = await this.connection.get<string>(url);
     const genresResponse = GenreResponse.toGenreDBModel(data);
 
