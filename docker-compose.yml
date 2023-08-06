@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  app:
+    image: movies_app:v1
+    container_name: movies_app
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: npm run start:prod
+    ports:
+      - 80:3000
+      - 9229:9229
