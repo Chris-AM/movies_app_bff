@@ -1,4 +1,11 @@
-import { IsNumber, IsOptional, IsPositive, IsString, Min } from 'class-validator';
+import { Type } from 'class-transformer';
+import {
+  IsNumber,
+  IsOptional,
+  IsPositive,
+  IsString,
+  Min,
+} from 'class-validator';
 
 export class QueryDto {
   @IsOptional()
@@ -11,14 +18,14 @@ export class QueryDto {
   @IsNumber()
   @IsPositive()
   offset?: number;
-  
+
   @IsOptional()
   @IsNumber()
   @IsPositive()
+  @Type(() => Number)
   page?: number;
 
   @IsOptional()
   @IsString()
   language?: string;
-
 }
