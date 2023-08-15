@@ -10,7 +10,8 @@ export class DiscoverRepositoryImpl implements DiscoverRepository {
   async getMoviesByGenreId(
     genreId: number,
     page: number,
+    language: string,
   ): Promise<MovieEntity[]> {
-    return await this.datasource.getMoviesByGenreId(genreId, page);
+    return await this.datasource.getMoviesByGenreId(genreId, page, language);
   }
 }

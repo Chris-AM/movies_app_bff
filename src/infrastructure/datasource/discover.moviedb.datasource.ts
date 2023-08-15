@@ -13,9 +13,11 @@ export class DiscoverMovieDBDatasource implements DiscoverDatasource {
   async getMoviesByGenreId(
     genreId: number,
     page: number,
+    language: string,
   ): Promise<MovieEntity[]> {
-    const url = `${this.config.getMovieDBUrl()}/discover/movie?api_key=${this.config.getMovieDBApiKey()}&with_genres=${genreId}&page=${page}`;
-    const data = await this.connection.get<string>(url);
+    const baseUrl = `${this.config.getMovieDBUrl()}/discover/movie?`;
+    const queries = `${baseUrl}api_key=${this.config.getMovieDBApiKey()}&with_genres=${genreId}&page=${page}&language=${language}`;
+    const data = await this.connection.get<string>(queries);
     const discoverResponse = MovieDBResponse.toMovieDBModel(data);
     const movies: MovieEntity[] = discoverResponse.results.map((resultData) => {
       const movieEntity = MovieMapper.movieDBToEntity(resultData);

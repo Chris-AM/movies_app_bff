@@ -1,20 +1,22 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
 import { DiscoverService } from './discover.service';
+import { QueryDto } from 'src/config/dto/query.dto';
 
 @Controller('discover')
 export class DiscoverController {
   constructor(private readonly discoverService: DiscoverService) {}
 
   @Get('data-for-posters')
-  async getDataForPosters() {
-    return await this.discoverService.getDataForPosters();
+  async getDataForPosters(@Query() queryDto: QueryDto) {
+    return await this.discoverService.getDataForPosters(queryDto);
   }
 
   @Get('movies-by-genre/:genreId')
   async getMoviesByGenreId(
     @Param('genreId') genreId: number,
-    @Query('page') page: number,
+    @Query() queryDto: QueryDto,
   ) {
-    return await this.discoverService.getMoviesByGenreId(genreId, page);
+    console.log('queryDto', queryDto);
+    return await this.discoverService.getMoviesByGenreId(genreId, queryDto);
   }
 }
