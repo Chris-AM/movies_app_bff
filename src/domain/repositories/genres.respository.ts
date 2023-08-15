@@ -1,5 +1,5 @@
 import { GenreEntity } from '../entities/genres.entity';
 
 export interface GenresRepository {
-  getGenres(): Promise<GenreEntity[]>;
+  getGenres(language: string): Promise<GenreEntity[]>;
 }

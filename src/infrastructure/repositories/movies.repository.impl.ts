@@ -7,28 +7,37 @@ import {
 export class MovieRepositoryImpl implements MoviesRepository {
   constructor(private readonly datasource: MoviesDatasource) {}
 
-  async getNowPlaying(page: number): Promise<MovieEntity[]> {
-    return await this.datasource.getNowPlaying(page);
+  async getNowPlaying(page: number, language: string): Promise<MovieEntity[]> {
+    return await this.datasource.getNowPlaying(page, language);
   }
-  async getPopular(page: number): Promise<MovieEntity[]> {
-    return await this.datasource.getPopular(page);
+  async getPopular(page: number, language: string): Promise<MovieEntity[]> {
+    return await this.datasource.getPopular(page, language);
   }
-  async getUpcoming(page: number): Promise<MovieEntity[]> {
-    return await this.datasource.getUpcoming(page);
+  async getUpcoming(page: number, language: string): Promise<MovieEntity[]> {
+    return await this.datasource.getUpcoming(page, language);
   }
-  async topRated(page: number): Promise<MovieEntity[]> {
-    return await this.datasource.topRated(page);
+  async topRated(page: number, language: string): Promise<MovieEntity[]> {
+    return await this.datasource.topRated(page, language);
   }
-  async getMovieById(id: number): Promise<MovieEntity> {
-    return await this.datasource.getMovieById(id);
+  async getMovieById(id: number, language: string): Promise<MovieEntity> {
+    return await this.datasource.getMovieById(id, language);
   }
-  async searchMovies(searchTerm: string): Promise<MovieEntity[]> {
-    return await this.datasource.searchMovies(searchTerm);
+  async searchMovies(
+    searchTerm: string,
+    language: string,
+  ): Promise<MovieEntity[]> {
+    return await this.datasource.searchMovies(searchTerm, language);
   }
-  async getVideosFromYouTube(movieId: number): Promise<MovieEntity[]> {
-    return await this.datasource.getVideosFromYouTube(movieId);
+  async getVideosFromYouTube(
+    movieId: number,
+    language: string,
+  ): Promise<MovieEntity[]> {
+    return await this.datasource.getVideosFromYouTube(movieId, language);
   }
-  async getSimilarMovies(movieId: number): Promise<MovieEntity[]> {
-    return await this.datasource.getSimilarMovies(movieId);
+  async getSimilarMovies(
+    movieId: number,
+    language: string,
+  ): Promise<MovieEntity[]> {
+    return await this.datasource.getSimilarMovies(movieId, language);
   }
 }

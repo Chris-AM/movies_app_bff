@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { QueryDto } from 'src/config/config';
 import { MovieEntity } from 'src/domain/domain';
 import { MovieDBDatasource } from 'src/infrastructure/infrastructure';
 
@@ -6,35 +7,44 @@ import { MovieDBDatasource } from 'src/infrastructure/infrastructure';
 export class MoviesService {
   constructor(private readonly datasource: MovieDBDatasource) {}
 
-  async getNowPlaying(page: number): Promise<MovieEntity[]> {
-    return await this.datasource.getNowPlaying(page);
+  async getNowPlaying(queryDto: QueryDto): Promise<MovieEntity[]> {
+    const { language, page } = queryDto;
+    return await this.datasource.getNowPlaying(page, language);
   }
 
-  async getPopular(page: number) {
-    return await this.datasource.getPopular(page);
+  async getPopular(queryDto: QueryDto) {
+    const { page, language } = queryDto;
+    console.log('page', page);
+    return await this.datasource.getPopular(page, language);
   }
 
-  async getUpcoming(page: number) {
-    return await this.datasource.getUpcoming(page);
+  async getUpcoming(queryDto: QueryDto) {
+    const { page, language } = queryDto;
+    return await this.datasource.getUpcoming(page, language);
   }
 
-  async topRated(page: number) {
-    return await this.datasource.topRated(page);
+  async topRated(queryDto: QueryDto) {
+    const { page, language } = queryDto;
+    return await this.datasource.topRated(page, language);
   }
 
-  async getMovieById(id: number) {
-    return await this.datasource.getMovieById(id);
+  async getMovieById(id: number, queryDto: QueryDto) {
+    const { language } = queryDto;
+    return await this.datasource.getMovieById(id, language);
   }
 
-  async searchMovies(searchTerm: string) {
-    return await this.datasource.searchMovies(searchTerm);
+  async searchMovies(searchTerm: string, queryDto: QueryDto) {
+    const { language } = queryDto;
+    return await this.datasource.searchMovies(searchTerm, language);
   }
 
-  async getVideosFromYouTube(movieId: number) {
-    return await this.datasource.getVideosFromYouTube(movieId);
+  async getVideosFromYouTube(movieId: number, queryDto: QueryDto) {
+    const { language } = queryDto;
+    return await this.datasource.getVideosFromYouTube(movieId, language);
   }
 
-  async getSimilarMovies(movieId: number) {
-    return await this.datasource.getSimilarMovies(movieId);
+  async getSimilarMovies(movieId: number, queryDto: QueryDto) {
+    const { language } = queryDto;
+    return await this.datasource.getSimilarMovies(movieId, language);
   }
 }

@@ -7,7 +7,7 @@ import {
 export class GenresRepositoryImpl implements GenresRepository {
   constructor(private readonly datasource: GenresDataSource) {}
 
-  async getGenres(): Promise<GenreEntity[]> {
-    return await this.datasource.getGenres();
+  async getGenres(language: string): Promise<GenreEntity[]> {
+    return await this.datasource.getGenres(language);
   }
 }

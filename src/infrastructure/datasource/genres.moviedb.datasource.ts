@@ -11,8 +11,9 @@ export class GenresMovieDBDatasource implements GenresDataSource {
     private readonly config: EnvironmentConfigService,
   ) {}
 
-  async getGenres(): Promise<GenreEntity[]> {
-    const url = `${this.config.getMovieDBUrl()}/genre/movie/list?api_key=${this.config.getMovieDBApiKey()}`;
+  async getGenres(language: string): Promise<GenreEntity[]> {
+    const baseUrl = `${this.config.getMovieDBUrl()}/genre/movie/list?`
+    const url = `${baseUrl}api_key=${this.config.getMovieDBApiKey()}&language=${language}`;
     const data = await this.connection.get<string>(url);
     const genresResponse = GenreResponse.toGenreDBModel(data);
 
